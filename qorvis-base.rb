@@ -52,6 +52,10 @@ dep "apache vhost configured" do
 end
 
 dep "github repo checked out", :reponame do
+dep "src dir exists" do
+  met? { shell? "ls -l #{File.expand_path("~/src")}" }
+  meet { shell "mkdir -p #{File.expand_path("~/src")}"}
+end
 
 dep "ssh key authorized", :something do
   met? do
