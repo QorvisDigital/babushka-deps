@@ -66,6 +66,15 @@ dep "github repo checked out", :reponame do
   meet { shell "git clone #{github_repo_url(reponame)} ~/src/#{reponame}" }
 end
 
+dep "github repo up-to-date", :reponame do
+  requires "github repo checked out".with(reponame), "git"
+  met? do
+    shell "cd #{File.expand_path("~/src/"+reponame)}; git remote update"
+    shell("cd #{File.expand_path("~/src/"+reponame)}; git status -uno -sb").grep(/behind/).length == 0
+  end
+  meet { log_shell "Updating Git Repo", "cd #{File.expand_path("~/src/"+reponame)}; git pull" }
+end
+
 dep "src dir exists" do
   met? { shell? "ls -l #{File.expand_path("~/src")}" }
   meet { shell "mkdir -p #{File.expand_path("~/src")}"}
