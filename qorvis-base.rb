@@ -70,7 +70,7 @@ dep "github repo up-to-date", :reponame do
   requires "github repo checked out".with(reponame), "git"
   met? do
     shell "cd #{File.expand_path("~/src/"+reponame)}; git remote update"
-    shell("cd #{File.expand_path("~/src/"+reponame)}; git status -uno -sb").grep(/behind/).length == 0
+    (shell("cd #{File.expand_path("~/src/"+reponame)}; git status -uno -sb") =~ /behind/) == nil
   end
   meet { log_shell "Updating Git Repo", "cd #{File.expand_path("~/src/"+reponame)}; git pull" }
 end
