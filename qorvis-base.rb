@@ -55,6 +55,16 @@ dep "github repo checked out", :reponame do
 
 end
 
+dep "ssh key exists", :something do
+  met? do
+    shell? "ls -l #{File.expand_path("~/.ssh/id*pub")}" 
+  end
+  meet do
+    shell "ssh-keygen -t rsa -f #{File.expand_path("~/.ssh/id_rsa")} -N ''"
+  end
+end
+
+
 dep "drupal core installed", :version do
   
 end
