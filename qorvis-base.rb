@@ -50,3 +50,7 @@ end
 dep "apache vhost configured" do
 
 end
+
+dep "github repo checked out", :reponame
+
+end
