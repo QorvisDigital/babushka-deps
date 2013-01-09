@@ -51,6 +51,10 @@ dep "apache vhost configured" do
 
 end
 
-dep "github repo checked out", :reponame
+dep "github repo checked out", :reponame do
 
+end
+
+dep "drupal core installed", :version do
+  
 end
