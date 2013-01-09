@@ -60,6 +60,12 @@ dep "apache vhost configured" do
 end
 
 dep "github repo checked out", :reponame do
+  reponame.ask("Please enter the name of the repository")
+  requires "src dir exists", "ssh key exists", "ssh key authorized", "git"
+  met? { shell? "ls -l #{File.expand_path("~/src/"+reponame)}" }
+  meet { shell "git clone #{github_repo_url(reponame)} ~/src/#{reponame}" }
+end
+
 dep "src dir exists" do
   met? { shell? "ls -l #{File.expand_path("~/src")}" }
   meet { shell "mkdir -p #{File.expand_path("~/src")}"}
