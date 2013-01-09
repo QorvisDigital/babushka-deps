@@ -53,6 +53,13 @@ end
 
 dep "github repo checked out", :reponame do
 
+dep "ssh key authorized", :something do
+  met? do
+    k = shell "cat #{File.expand_path("~/.ssh/id_*.pub")}"
+    something.ask "Has the key \n #{k} \n been authorized as a deployment key (say yes, then yes again if so)?"
+    true if something == 'yes'
+  end
+  meet { true }
 end
 
 dep "ssh key exists", :something do
