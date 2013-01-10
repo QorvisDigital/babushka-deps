@@ -19,7 +19,7 @@ dep "install drupal site", :sitename, :reponame, :dbname, :dbuser, :dbpass do
   dbpass.default('').ask("Enter the Database Password, if blank, one will be created for you")
   
   requires [
-    "drupal database installed".with(:sitename => sitename, ),
+    "drupal database installed".with(:sitename => sitename ),
     "drupal site code installed",
     "vhost configured",
     "webservers running"
