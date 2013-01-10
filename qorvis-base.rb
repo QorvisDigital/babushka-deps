@@ -51,7 +51,8 @@ dep "nginx vhost configured", :sitename do
         :enable_http => 'yes',
         :enable_https => 'no',
         :force_https => 'no',
-        :nginx_prefix => "/usr/local/"
+        :nginx_prefix => "/usr/local/",
+        :vhost_type => "proxy"
         )
 end
 
