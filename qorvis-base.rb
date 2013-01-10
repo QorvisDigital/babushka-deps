@@ -42,7 +42,7 @@ dep "vhost configured" do
 end
 
 dep "nginx vhost configured", :sitename do
-  requires "vhost configured.nginx".with(
+  requires "nagey:vhost configured.nginx".with(
         :domain => sitename,
         :domain_aliases => '', 
         :listen_host => '[::]', 
