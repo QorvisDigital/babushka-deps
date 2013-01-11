@@ -45,7 +45,7 @@ dep "nginx vhost configured", :sitename do
   requires "nagey:vhost configured.nginx".with(
         :domain => sitename,
         :domain_aliases => '', 
-        :listen_host => '[::]', 
+        :listen_host => '127.0.0.1', 
         :listen_port => '80', 
         :proxy_host => 'localhost',
         :proxy_port => '8000',
