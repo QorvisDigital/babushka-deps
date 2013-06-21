@@ -65,7 +65,7 @@ dep "15sfest build-app" do
 end
 
 dep "npm" do
-  requires nagey:"nodejs.src"
+  requires "nagey:nodejs.src"
 end
 
 dep "grunt" do
