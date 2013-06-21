@@ -80,7 +80,7 @@ dep "15sfest build-app" do
 end
 
 dep "15sfest build-app-task" do 
-  sudo "cd #{srcdir}/app; killall -9 node; cp -pr #{srcdir}/app/* #{appdir}; npm start"
+  sudo "cd #{srcdir}/app; killall -9 node; cp -pr #{srcdir}/app/* #{appdir}; npm install && npm start"
 end
 
 dep "npm" do
