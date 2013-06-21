@@ -125,3 +125,15 @@ dep '15sfest-gitdir' do
   met? { File.exists? File.expand_path(srcdir) }
   meet { sudo "mkdir -p #{srcdir}" }
 end
+
+dep "mongodb.managed" do
+  provides "mongod"
+end
+
+dep "daemontools.managed" do
+  provides "svc", "supervise", "svscan"
+end
+
+dep "redis-server.managed" do
+  provides "redis-server"
+end
