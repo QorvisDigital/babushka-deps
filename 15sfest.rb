@@ -79,16 +79,16 @@ dep "bower" do
 end
 
 dep '15sfest-srcdir' do
-  met? { File.exists? webdir }
+  met? { File.exists? File.expand_path(webdir) }
   meet { sudo "mkdir -p #{webdir}" }
 end
 
 dep '15sfest-appdir' do
-  met? { File.exists? appdir }
+  met? { File.exists? File.expand_path(appdir) }
   meet { sudo "mkdir -p #{appdir}" }
 end
 
 dep '15sfest-gitdir' do
-  met? { File.exists? srcdir }
+  met? { File.exists? File.expand_path(srcdir) }
   meet { sudo "mkdir -p #{srcdir}" }
 end
