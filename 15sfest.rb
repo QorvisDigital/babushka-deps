@@ -89,15 +89,25 @@ dep "npm" do
 end
 
 dep "grunt" do
-  requires "npm"
+  requires "npm", "phantomjs", "compass"
   met? { shell? "which grunt" }
   meet { sudo "npm install -g grunt-cli" }
+end
+
+dep "compass" do
+  sudo "gem install compass"
 end
 
 dep "bower" do
   requires "npm"
   met? { shell? "which bower" }
   meet { sudo "npm install -g bower" }
+end
+
+dep "phantomjs" do
+  requires "npm"
+  met? { shell? "which phantomjs" }
+  meet { sudo "npm install -g phantomjs" }
 end
 
 dep '15sfest-srcdir' do
