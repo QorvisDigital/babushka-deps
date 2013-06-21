@@ -39,6 +39,19 @@ dep "hostname configured", :myhostname do
   meet { sudo "echo '127.0.0.1 #{myhostname}' >> /etc/hosts" }
 end
 
+dep "15sfest updated" do
+  requires "15sfest cloned"
+  
+  met? do
+    shell "cd #{srcdir}; git remote update"
+    true unless shell("cd #{srcdir}; git status -uno -sb") =~ /behind/
+  end
+  
+  meet do
+    log_shell "Updating Git Repository", "cd #{srcdir}; git pull"
+  end
+end 
+
 dep "15sfest cloned" do
   requires "15sfest-srcdir", "15sfest-appdir", "15sfest-gitdir", "git"
   
@@ -51,7 +64,7 @@ dep "15sfest cloned" do
 end
 
 dep "15sfest build" do
-  requires "15sfest cloned", "15sfest build-web", "15sfest build-app"
+  requires "15sfest updated", "15sfest build-web", "15sfest build-app"
 end
 
 dep "15sfest build-web" do
