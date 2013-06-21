@@ -6,7 +6,7 @@ dep '15sfestWeb' do
     "nagey:vhost enabled.nginx".with(
       :domain => web_hostname,
       :vhost_type => "websocket_proxy",
-      :path => md_web_dir(package),
+      :path => "/var/www",
       :nginx_prefix => "/usr/local/nginx",
       :domain_aliases => '',
       :force_https => 'no',
