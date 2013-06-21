@@ -42,12 +42,9 @@ end
 dep "15sfest cloned" do
   requires "15sfest-srcdir", "15sfest-appdir", "15sfest-gitdir", "git"
   
-  git_dir = gitdir
-  git_url = "git@github.com:nagey/ouiff.git"
-  
-  met? { File.exists? "#{git_dir}/.git/config" }
+  met? { File.exists? "#{srcdir}/.git/config" }
   meet do
-    shell "git clone #{git_url} #{git_dir}"
+    shell "git clone #{git_url} #{srcdir}"
   end
 end
 
