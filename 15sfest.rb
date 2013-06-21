@@ -15,6 +15,7 @@ dep '15sfestWeb' do
   web_hostname = "15sfest.com"
   listen_port = 80
   requires [ 
+    "15sfest-system-deps",
     "hostname configured".with(:myhostname => web_hostname),
     "nagey:vhost enabled.nginx".with(
       :domain => web_hostname,
@@ -125,6 +126,9 @@ dep '15sfest-gitdir' do
   met? { File.exists? File.expand_path(srcdir) }
   meet { sudo "mkdir -p #{srcdir}" }
 end
+
+dep "15sfest-system-deps" do
+  requires "mongod.managed", "daemontools.managed", "redis-server.managed"
 
 dep "mongodb.managed" do
   provides "mongod"
