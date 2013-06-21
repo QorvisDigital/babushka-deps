@@ -55,12 +55,18 @@ dep "15sfest build" do
 end
 
 dep "15sfest build-web" do
-  requires "grunt", "bower", "npm"
+  requires "grunt", "bower", "npm", "15sfest build-web-task"
+end
+
+dep "15sfest build-web-task" do 
   shell "cd #{srcdir}/html; grunt && rm -rf #{webdir}/* && cp -pr #{srcdir}/html/dist #{webdir}"
 end
 
 dep "15sfest build-app" do
-  requires "npm", "nodejs.src"
+  requires "npm", "nodejs.src", "15sfest build-app-task"
+end
+
+dep "15sfest build-app-task" do 
   sudo "cd #{srcdir}/app; killall -9 node; cp -pr #{srcdir}/app/* #{appdir}; npm start"
 end
 
