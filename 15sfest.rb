@@ -95,7 +95,8 @@ dep "grunt" do
 end
 
 dep "compass" do
-  sudo "gem install compass"
+  met? { shell? "gem list | grep -i compass" }
+  meet { sudo "gem install compass" }
 end
 
 dep "bower" do
