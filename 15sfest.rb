@@ -2,7 +2,7 @@ dep '15sfestWeb' do
   web_hostname = "15sfest.com"
   listen_port = 80
   requires [ 
-    "hostname configured".with(:myhostname => md_client_html5_hostname),
+    "hostname configured".with(:myhostname => web_hostname),
     "nagey:vhost enabled.nginx".with(
       :domain => web_hostname,
       :vhost_type => "websocket_proxy",
