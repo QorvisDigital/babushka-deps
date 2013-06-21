@@ -7,7 +7,7 @@ def appdir
 end
 
 def srcdir
-  "~/src/15sfest"
+  File.expand_path("~/src/15sfest")
 end
 
 
