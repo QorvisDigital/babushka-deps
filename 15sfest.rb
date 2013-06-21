@@ -73,7 +73,7 @@ end
 
 dep "15sfest build-web-task" do 
   requires "grunt", "npm"
-  shell "cd #{srcdir}/html; npm install && bower install && grunt && rm -rf #{webdir}/* && cp -pr #{srcdir}/html/dist #{webdir}"
+  shell "cd #{srcdir}/html; npm install && bower install && grunt && rm -rf #{webdir}/* && cp -pr #{srcdir}/html/dist/* #{webdir}"
 end
 
 dep "15sfest build-app" do
