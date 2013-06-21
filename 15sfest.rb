@@ -128,7 +128,7 @@ dep '15sfest-gitdir' do
 end
 
 dep "15sfest-system-deps" do
-  requires "mongod.managed", "daemontools.managed", "redis-server.managed"
+  requires "mongodb.managed", "daemontools.managed", "redis-server.managed"
 end
 
 dep "mongodb.managed" do
