@@ -148,6 +148,6 @@ dep "redis-server.managed" do
   provides "redis-server"
 end
 
-dep "redis" do
+dep "redis.managed" do
   provides "redis-server"
 end
