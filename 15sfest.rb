@@ -128,7 +128,7 @@ dep '15sfest-gitdir' do
 end
 
 dep "15sfest-system-deps" do
-  requires "mongodb.managed", "daemontools.managed", "redis-server.managed"
+  requires "mongodb.managed", "daemontools.managed", "redis"
 end
 
 dep "mongodb.managed" do
@@ -139,6 +139,15 @@ dep "daemontools.managed" do
   provides "svc", "supervise", "svscan"
 end
 
+dep "redis" do
+  requires "redis-server.managed" unless Babushka::host.osx?
+  requires "redis.managed" if Babushka::host.osx?
+end
+
 dep "redis-server.managed" do
+  provides "redis-server"
+end
+
+dep "redis" do
   provides "redis-server"
 end
