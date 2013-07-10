@@ -86,7 +86,14 @@ dep "15sfest build-app-task" do
 end
 
 dep "npm" do
-  requires "nagey:nodejs.src"
+  requires "nagey:nodejs.src", "npm globals path"
+end
+
+dep "npm globals path" do
+  met? { shell? "echo $PATH|grep npm" }
+  meet { 
+    sudo 'echo "PATH=$PATH:/usr/local/share/npm/bin" >> /etc/profile' 
+  }
 end
 
 dep "grunt" do
@@ -124,7 +131,7 @@ end
 
 dep '15sfest-gitdir' do
   met? { File.exists? File.expand_path(srcdir) }
-  meet { sudo "mkdir -p #{srcdir}" }
+  meet { shell "mkdir -p #{srcdir}" }
 end
 
 dep "15sfest-system-deps" do
